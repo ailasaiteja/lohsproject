@@ -1,0 +1,32 @@
+/* src/App.css - Simplified */
+/* This file should only contain app-specific overrides, not global styles */
+
+/* Any app-specific animations or utilities can go here */
+
+/* Example: Smooth page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-300) 50%, var(--gray-200) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}

@@ -1,0 +1,42 @@
+/* src/pages/HomePage/HomePage.css - Minimal overrides */
+.cursor-pointer {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cursor-pointer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Winners track - hide scrollbar */
+.winners-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.winners-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card hover effects */
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Gradient background for winners section */
+.bg-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .carousel-text {
+    font-size: 1rem;
+  }
+  
+  .carousel-title {
+    font-size: 1.5rem;
+  }
+}
