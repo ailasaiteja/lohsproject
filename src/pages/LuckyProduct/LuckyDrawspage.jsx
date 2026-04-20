@@ -383,7 +383,13 @@ const LuckyDrawsPage = ({ user }) => {
   };
 
   const handleConfirmPurchase = async () => {
-    const token = localStorage.getItem("token");
+    if( ticketCount >= 100 ) {
+      toast.error('Ticket Limit', 'You can\'t purchase more than 100 tickets at a time.');
+      setApiPurchaseError('You can purchase more than 100 tickets at a time.');
+      return;
+    }
+
+    const token = localStorage.getItem("token");  
     if (!token) {
       // User NOT logged in - Redirect to login with intended path
       navigate("/login", {
@@ -399,7 +405,6 @@ const LuckyDrawsPage = ({ user }) => {
     }
 
     const totalAmount = selectedDraw.price * ticketCount;
-
     // if (walletState.balance < totalAmount) {
     //   toast.error('Insufficient Balance', `Need ₹${totalAmount}, Available: ₹${walletState.balance}`);
     //   return;
@@ -629,7 +634,7 @@ const LuckyDrawsPage = ({ user }) => {
   const handleIncrementTickets = () => {
     if (!selectedDraw) return;
     // No limit check - user can increase tickets indefinitely
-    setTicketCount(prev => prev + 1);
+      setTicketCount(prev => prev + 1); 
   };
 
   // Handle ticket count decrement - Prevent going below 1
@@ -1187,7 +1192,7 @@ const LuckyDrawsPage = ({ user }) => {
                       className="btn btn-outline-secondary rounded-circle"
                       style={{ width: '40px', height: '40px' }}
                       onClick={handleIncrementTickets}
-                      disabled={isProcessing}
+                      disabled={isProcessing || ticketCount >= 100}
                     >
                       <FaPlus />
                     </button>

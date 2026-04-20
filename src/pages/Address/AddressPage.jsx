@@ -275,7 +275,7 @@ const AddressSelection = ({
           const defaultAddress = transformedAddresses.find(addr => addr.is_default);
           if (defaultAddress) {
             setSelectedAddress(defaultAddress.id);
-            onAddressSelect(defaultAddress);
+            // onAddressSelect(defaultAddress);
           }
         }
       } else {
@@ -503,7 +503,7 @@ const AddressSelection = ({
   const handleAddressClick = (address) => {
     if (isProcessing) return;
     setSelectedAddress(address.id);
-    onAddressSelect(address);
+    // onAddressSelect(address);
   };
 
   // Load addresses when modal opens
@@ -657,7 +657,7 @@ const AddressSelection = ({
                               >
                                 <FaEdit className="text-info" />
                               </Button>
-                              <Button
+                              {/* <Button
                                 variant="link"
                                 size="sm"
                                 className="p-0"
@@ -670,7 +670,7 @@ const AddressSelection = ({
                                 title="Delete address"
                               >
                                 <FaTrash className="text-danger" />
-                              </Button>
+                              </Button> */}
                             </div>
                           </div>
                           

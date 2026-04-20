@@ -27,6 +27,47 @@ import { updateProfile, fetchStates, fetchCities } from "./profileApi";
 import LoadingToast from "../loading/LoadingToast";
 import { useToast } from "../toast/ToastContext";
 
+const Field = ({ label, icon, name, type, isEditing, formData, handleChange, disabled = false, error }) => (
+    <div className="col-md-6">
+      <label className="form-label fw-semibold mb-2" style={{ color: '#495057' }}>
+        {icon} {label} *
+      </label>
+      {isEditing ? (
+        <>
+          <input
+            type={type}
+            className={`form-control ${error ? 'is-invalid' : ''}`}
+            name={name}
+            value={formData[name]}
+            onChange={handleChange}
+            disabled={disabled}
+            style={{
+              borderRadius: '10px',
+              padding: '10px 15px',
+              border: '2px solid #e0e0e0',
+              backgroundColor: disabled ? '#f8f9fa' : 'white'
+            }}
+          />
+          {error && <div className="invalid-feedback d-block">{error}</div>}
+        </>
+      ) : (
+        <div
+          className="bg-light"
+          style={{
+            borderRadius: '10px',
+            padding: '10px 15px',
+            border: '2px solid #e0e0e0',
+            backgroundColor: '#f8f9fa',
+            color: '#495057'
+          }}
+        >
+          {formData[name] || "-"}
+        </div>
+      )}
+    </div>
+  );
+
+
 const ProfileContent = ({ user, onUpdateProfile }) => {
   const fileRef = useRef(null);
   const toast = useToast();
@@ -407,45 +448,45 @@ const ProfileContent = ({ user, onUpdateProfile }) => {
   }
 
   // Field component with consistent styling
-  const Field = ({ label, icon, name, type, isEditing, formData, handleChange, disabled = false, error }) => (
-    <div className="col-md-6">
-      <label className="form-label fw-semibold mb-2" style={{ color: '#495057' }}>
-        {icon} {label} *
-      </label>
-      {isEditing ? (
-        <>
-          <input
-            type={type}
-            className={`form-control ${error ? 'is-invalid' : ''}`}
-            name={name}
-            value={formData[name]}
-            onChange={handleChange}
-            disabled={disabled}
-            style={{
-              borderRadius: '10px',
-              padding: '10px 15px',
-              border: '2px solid #e0e0e0',
-              backgroundColor: disabled ? '#f8f9fa' : 'white'
-            }}
-          />
-          {error && <div className="invalid-feedback d-block">{error}</div>}
-        </>
-      ) : (
-        <div
-          className="bg-light"
-          style={{
-            borderRadius: '10px',
-            padding: '10px 15px',
-            border: '2px solid #e0e0e0',
-            backgroundColor: '#f8f9fa',
-            color: '#495057'
-          }}
-        >
-          {formData[name] || "-"}
-        </div>
-      )}
-    </div>
-  );
+  // const Field = ({ label, icon, name, type, isEditing, formData, handleChange, disabled = false, error }) => (
+  //   <div className="col-md-6">
+  //     <label className="form-label fw-semibold mb-2" style={{ color: '#495057' }}>
+  //       {icon} {label} *
+  //     </label>
+  //     {isEditing ? (
+  //       <>
+  //         <input
+  //           type={type}
+  //           className={`form-control ${error ? 'is-invalid' : ''}`}
+  //           name={name}
+  //           value={formData[name]}
+  //           onChange={handleChange}
+  //           disabled={disabled}
+  //           style={{
+  //             borderRadius: '10px',
+  //             padding: '10px 15px',
+  //             border: '2px solid #e0e0e0',
+  //             backgroundColor: disabled ? '#f8f9fa' : 'white'
+  //           }}
+  //         />
+  //         {error && <div className="invalid-feedback d-block">{error}</div>}
+  //       </>
+  //     ) : (
+  //       <div
+  //         className="bg-light"
+  //         style={{
+  //           borderRadius: '10px',
+  //           padding: '10px 15px',
+  //           border: '2px solid #e0e0e0',
+  //           backgroundColor: '#f8f9fa',
+  //           color: '#495057'
+  //         }}
+  //       >
+  //         {formData[name] || "-"}
+  //       </div>
+  //     )}
+  //   </div>
+  // );
 
   return (
     <>

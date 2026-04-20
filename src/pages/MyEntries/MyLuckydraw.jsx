@@ -77,16 +77,18 @@ const MyLuckydraw = ({ user }) => {
   useEffect(() => {
     if (entries && entries.length > 0) {
       const current = entries.filter(entry => 
-        entry.isActive === true && 
-        entry.status !== 'Announced' && 
-        entry.status !== 'Completed' && 
-        entry.status !== 'Ended'
+        // entry.isActive === true && 
+        entry.status !== 'Announced' 
+          // &&
+        // entry.status !== 'Completed' && 
+        // entry.status !== 'Ended'
       );
       const completed = entries.filter(entry => 
-        entry.isActive === false || 
-        entry.status === 'Announced' || 
-        entry.status === 'Completed' || 
-        entry.status === 'Ended'
+        // entry.isActive === false || 
+        entry.status === 'Announced' 
+        // || 
+        // entry.status === 'Completed' || 
+        // entry.status === 'Ended'
       );
       
       setCurrentEntries(current);

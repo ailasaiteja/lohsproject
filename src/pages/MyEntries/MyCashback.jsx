@@ -206,8 +206,8 @@ const MyCashback = () => {
   // Filter entries into current and completed
   useEffect(() => {
     if (entries && entries.length > 0) {
-      const current = entries.filter(entry => entry.isActive === true);
-      const completed = entries.filter(entry => entry.isActive === false);
+      const current = entries.filter(entry => entry.status !== "Announced");
+      const completed = entries.filter(entry => entry.status === "Announced");
       setCurrentEntries(current);
       setCompletedEntries(completed);
     } else {
